@@ -1,4 +1,4 @@
-package com.example.tom.webtest;
+package com.example.tom.webtest.util;
 
 import java.util.HashMap;
 import java.util.Map;

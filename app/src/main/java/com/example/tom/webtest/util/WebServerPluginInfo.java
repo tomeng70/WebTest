@@ -1,4 +1,4 @@
-package com.example.tom.webtest;
+package com.example.tom.webtest.util;
 
 /*
  * #%L
@@ -33,19 +33,16 @@ package com.example.tom.webtest;
  * #L%
  */
 
-import com.example.tom.webtest.NanoHTTPD.IHTTPSession;
-
-import java.io.File;
-import java.util.Map;
+import com.example.tom.webtest.util.WebServerPlugin;
 
 /**
  * @author Paul S. Hawke (paul.hawke@gmail.com) On: 9/14/13 at 8:09 AM
  */
-public interface WebServerPlugin {
+public interface WebServerPluginInfo {
 
-    boolean canServeUri(String uri, File rootDir);
+    String[] getIndexFilesForMimeType(String mime);
 
-    void initialize(Map<String, String> commandLineOptions);
+    String[] getMimeTypes();
 
-    NanoHTTPD.Response serveFile(String uri, Map<String, String> headers, IHTTPSession session, File file, String mimeType);
+    WebServerPlugin getWebServerPlugin(String mimeType);
 }

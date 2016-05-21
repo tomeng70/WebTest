@@ -36,7 +36,10 @@ package com.example.tom.webtest;
 import android.util.Log;
 
 import com.example.tom.webtest.NanoHTTPD.Response.IStatus;
+import com.example.tom.webtest.util.InternalRewrite;
 import com.example.tom.webtest.util.ServerRunner;
+import com.example.tom.webtest.util.WebServerPlugin;
+import com.example.tom.webtest.util.WebServerPluginInfo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

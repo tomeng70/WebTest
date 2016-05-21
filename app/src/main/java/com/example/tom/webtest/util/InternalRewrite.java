@@ -1,4 +1,4 @@
-package com.example.tom.webtest;
+package com.example.tom.webtest.util;
 
 /*
  * #%L
@@ -33,14 +33,32 @@ package com.example.tom.webtest;
  * #L%
  */
 
+import com.example.tom.webtest.NanoHTTPD;
+import com.example.tom.webtest.NanoHTTPD.Response;
+
+import java.io.ByteArrayInputStream;
+import java.util.Map;
+
 /**
- * @author Paul S. Hawke (paul.hawke@gmail.com) On: 9/14/13 at 8:09 AM
+ * @author Paul S. Hawke (paul.hawke@gmail.com) On: 9/15/13 at 2:52 PM
  */
-public interface WebServerPluginInfo {
+public class InternalRewrite extends Response {
 
-    String[] getIndexFilesForMimeType(String mime);
+    private final String uri;
 
-    String[] getMimeTypes();
+    private final Map<String, String> headers;
 
-    WebServerPlugin getWebServerPlugin(String mimeType);
+    public InternalRewrite(Map<String, String> headers, String uri) {
+        super(Status.OK, NanoHTTPD.MIME_HTML, new ByteArrayInputStream(new byte[0]), 0);
+        this.headers = headers;
+        this.uri = uri;
+    }
+
+    public Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public String getUri() {
+        return this.uri;
+    }
 }
